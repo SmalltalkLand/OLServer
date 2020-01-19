@@ -1,3 +1,2 @@
-import * as express from 'express'
-var server = express();
+var server = new Proxy({routes: new Map(),get: function(req,res){return this.routes.keys().filter(k => k(req,url)).map(k => this.routes.get(k))[0](req,res)}},{apply: (o,t,args) => o.get.apply(o,args)});
 export {server}
